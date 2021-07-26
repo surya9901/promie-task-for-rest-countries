@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+
+    <div id="flag"></div>
+    <script>
+        var data = fetch("https://restcountries.eu/rest/v2/all");
+
+        data
+            .then(function (res) {
+                return res.json();
+            })
+
+            .then(function (resdata) {
+ 
+                for (var i = 0; i < resdata.length; i++) {
+
+
+                    var h2 = document.createElement("h2")
+                    h2.innerText = resdata[i].name;
+                    document.getElementById("flag").appendChild(h2);
+
+                    var img = document.createElement("img")
+                    img.src = resdata[i].flag;
+                    img.height = '100'
+                    img.width = '150'
+                    document.getElementById("flag").appendChild(img);
+                }
+            })
+
+            .catch(function (err) {
+                console.log("ERROR")
+            })
+
+    </script>
+
+
+</body>
+
+</html>
