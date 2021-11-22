@@ -14,7 +14,7 @@
 
     <div id="flag"></div>
     <script>
-        var data = fetch("https://restcountries.eu/rest/v2/all");
+        var data = fetch("https://restcountries.com/v3.1/all");
 
         data
             .then(function (res) {
@@ -22,16 +22,16 @@
             })
 
             .then(function (resdata) {
- 
+                console.log(resdata)
                 for (var i = 0; i < resdata.length; i++) {
 
 
                     var h2 = document.createElement("h2")
-                    h2.innerText = resdata[i].name;
+                    h2.innerText = resdata[i].name.common;
                     document.getElementById("flag").appendChild(h2);
 
                     var img = document.createElement("img")
-                    img.src = resdata[i].flag;
+                    img.src = resdata[i].flags.png;
                     img.height = '100'
                     img.width = '150'
                     document.getElementById("flag").appendChild(img);
